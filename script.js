@@ -9,7 +9,9 @@ document.addEventListener("DOMContentLoaded", () => {
         db = e.target.result;
         console.log("Base de datos lista");
         cargarClientesEnSelect();
+        mostrarClientes();
         mostrarPedidos();
+
     };
 
     request.onupgradeneeded = (e) => {
@@ -57,6 +59,7 @@ function agregarCliente() {
         document.getElementById("nombreCliente").value = "";
         document.getElementById("ciCliente").value = "";
         cargarClientesEnSelect();
+        mostrarClientes();
         Swal.fire({
             title: "Registrado",
             text: "Cliente agregado correctamente!",
@@ -70,6 +73,96 @@ function agregarCliente() {
             title: "Error...",
             text: "El CI ya existe",
         });
+}
+function mostrarClientes() {
+    const contenedor = document.getElementById("listaClientes");
+    contenedor.innerHTML = "";
+
+    const trans = db.transaction("clientes", "readonly");
+    const store = trans.objectStore("clientes");
+
+    store.openCursor().onsuccess = (e) => {
+        const cursor = e.target.result;
+        if (cursor) {
+            const { id, nombre, ci } = cursor.value;
+            const div = document.createElement("div");
+            div.classList.add("cliente-item");
+            div.innerHTML = `
+        <p><strong>${nombre}</strong> — CI: ${ci}</p>
+        <div class="cliente-actions">
+          <button onclick="editarCliente(${id})">Editar</button>
+          <button onclick="eliminarCliente(${id})">Eliminar</button>
+        </div>
+      `;
+            contenedor.appendChild(div);
+            cursor.continue();
+        }
+    };
+}
+function editarCliente(id) {
+    const trans = db.transaction("clientes", "readonly");
+    const store = trans.objectStore("clientes");
+    store.get(id).onsuccess = (e) => {
+        const cliente = e.target.result;
+        document.getElementById("nombreCliente").value = cliente.nombre;
+        document.getElementById("ciCliente").value = cliente.ci;
+        document.getElementById("btnActualizarCliente").dataset.id = id; // guardamos el id
+    };
+}
+document.getElementById("btnActualizarCliente").addEventListener("click", () => {
+    const id = document.getElementById("btnActualizarCliente").dataset.id;
+    if (!id) {
+        return Swal.fire({
+            icon: "info",
+            title: "Atención",
+            text: "Seleccione un cliente desde la lista para editar",
+        });
+    }
+    const nombre = document.getElementById("nombreCliente").value.trim();
+    const ci = document.getElementById("ciCliente").value.trim();
+
+    if (!nombre || !ci) {
+        return Swal.fire({
+            icon: "error",
+            title: "Error",
+            text: "Debe llenar ambos campos",
+        });
+    }
+    const trans = db.transaction("clientes", "readwrite");
+    const store = trans.objectStore("clientes");
+    store.get(Number(id)).onsuccess = (e) => {
+        const cliente = e.target.result;
+        cliente.nombre = nombre;
+        cliente.ci = ci;
+        store.put(cliente);
+    };
+
+    trans.oncomplete = () => {
+        document.getElementById("btnActualizarCliente").removeAttribute("data-id");
+        document.getElementById("nombreCliente").value = "";
+        document.getElementById("ciCliente").value = "";
+        cargarClientesEnSelect();
+        mostrarClientes();
+        Swal.fire({
+            title: "Actualizado",
+            text: "Cliente modificado correctamente",
+            icon: "success",
+        });
+    };
+});
+function eliminarCliente(id) {
+    const trans = db.transaction("clientes", "readwrite");
+    const store = trans.objectStore("clientes");
+    store.delete(id);
+    trans.oncomplete = () => {
+        cargarClientesEnSelect();
+        mostrarClientes();
+        Swal.fire({
+            title: "Eliminado",
+            text: "Cliente eliminado correctamente",
+            icon: "success",
+        });
+    };
 }
 
 function borrarCliente() {
