@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Examen Segundo Parcial</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+</head>
+
+<body>
+  <header class="navbar">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/3/33/Figma-logo.svg" alt="Logo" class="logo">
+    <nav class="nav-links">
+      <a href="#">Products</a>
+      <a href="#">Solutions</a>
+      <a href="#">Community</a>
+      <a href="#">Resources</a>
+      <a href="#">Pricing</a>
+      <a href="#">Contact</a>
+      <a href="#">Link</a>
+    </nav>
+    <div class="nav-right">
+      <button class="signin">Sign in</button>
+      <button class="register">Register</button>
+    </div>
+  </header>
+  <div class="icon">
+    <i class="fa-solid fa-heart"></i>
+  </div>
+  <section class="crud-section">
+    <div class="crud-box" id="formClientes">
+      <h3>Clientes</h3>
+      <label>Nombre</label>
+      <input type="text" id="nombreCliente" placeholder="Ingrese nombre">
+      <label>CI</label>
+      <div class="input-group">
+        <input type="text" id="ciCliente" placeholder="Ingrese CI">
+        <div class="buttons-inline">
+          <button id="btnAgregarCliente" class="add">Agregar</button>
+          <button id="btnBorrarCliente" class="delete">Borrar</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="crud-box" id="formPedidos">
+      <h3>Pedidos</h3>
+      <label>Producto</label>
+      <div class="input-group">
+        <input type="text" id="productoPedido" placeholder="Ingrese producto">
+        <button id="btnAgregarPedido" class="add">Agregar</button>
+      </div>
+      <label>Cantidad</label>
+      <input type="number" id="cantidadPedido" placeholder="Ingrese cantidad">
+      <label>Cliente</label>
+      <select id="selectCliente"></select>
+    </div>
+  </section>
+  <section class="reviews">
+    <div>
+      <h2>Latest reviews</h2>
+    </div>
+    <div class="review-cards">
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <h4>Review title</h4>
+        <p>Review body</p>
+        <div class="reviewer">
+          <i class="fa-solid fa-user"></i>
+          <div>
+            <p>Reviewer name</p>
+            <small>Date</small>
+          </div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <h4>Review title</h4>
+        <p>Review body</p>
+        <div class="reviewer">
+          <i class="fa-solid fa-user"></i>
+          <div>
+            <p>Reviewer name</p>
+            <small>Date</small>
+          </div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <h4>Review title</h4>
+        <p>Review body</p>
+        <div class="reviewer">
+          <i class="fa-solid fa-user"></i>
+          <div>
+            <p>Reviewer name</p>
+            <small>Date</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="reviews-section">
+    <div class="review-image">
+      <img
+        src="https://pandorafms.com/blog/wp-content/uploads/2018/03/Atencion-al-Cliente-2.0-una-nueva-forma-de-relacionarse-con-los-usuarios.png"
+        alt="Atención al Cliente 2.0" width="1080">
+    </div>
+    <div class="review-content">
+      <div class="review-header">
+        <div class="heart-icon">
+          <i class="fa-solid fa-heart"></i>
+        </div>
+        <div class="table-container">
+          <table class="review-table">
+            <thead>
+              <tr>
+                <th>Producto</th>
+                <th>Cantidad</th>
+                <th>Cliente</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                  <div class="actions">
+                    <button class="btn-actualizar">Actualizar</button>
+                    <button class="btn-borrar">Borrar</button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="cards">
+    <h1>Heading</h1>
+    <h2>Subheading</h2>
+    <div class="card">
+      <div class="card-content">
+        <img src="https://thumbs.dreamstime.com/b/botón-del-cuadrado-rojo-cliente-icono-miembro-102197915.jpg"
+          alt="Imagen 1">
+        <div class="text">
+          <h4>Title</h4>
+          <p>Body text for whatever you'd like to say. Add main takeaway points, quotes, anecdotes, or even a very very
+            short story.</p>
+          <button>Button</button>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-content">
+        <img src="https://thumbs.dreamstime.com/b/botón-del-cuadrado-rojo-cliente-icono-miembro-102197915.jpg"
+          alt="Imagen 2">
+        <div class="text">
+          <h4>Title</h4>
+          <p>Body text for whatever you'd like to say. Add main takeaway points, quotes, anecdotes, or even a very very
+            short story.</p>
+          <button>Button</button>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-content">
+        <img src="https://thumbs.dreamstime.com/b/botón-del-cuadrado-rojo-cliente-icono-miembro-102197915.jpg"
+          alt="Imagen 3">
+        <div class="text">
+          <h4>Title</h4>
+          <p>Body text for whatever you'd like to say. Add main takeaway points, quotes, anecdotes, or even a very very
+            short story.</p>
+          <button>Button</button>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-logo">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/3/33/Figma-logo.svg" alt="Logo" class="logo">
+        <div class="social-icons">
+          <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="#"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#"><i class="fa-brands fa-youtube"></i></a>
+          <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <div class="column">
+          <h5>Use cases</h5>
+          <a href="#">UI design</a>
+          <a href="#">UX design</a>
+          <a href="#">Wireframing</a>
+          <a href="#">Diagramming</a>
+          <a href="#">Brainstorming</a>
+          <a href="#">Online whiteboard</a>
+          <a href="#">Team collaboration</a>
+        </div>
+        <div class="column">
+          <h5>Explore</h5>
+          <a href="#">Design</a>
+          <a href="#">Prototyping</a>
+          <a href="#">Development features</a>
+          <a href="#">Design systems</a>
+          <a href="#">Collaboration features</a>
+          <a href="#">Design process</a>
+          <a href="#">FigJam</a>
+        </div>
+        <div class="column">
+          <h5>Resources</h5>
+          <a href="#">Blog</a>
+          <a href="#">Best practices</a>
+          <a href="#">Colors</a>
+          <a href="#">Color wheel</a>
+          <a href="#">Support</a>
+          <a href="#">Developers</a>
+          <a href="#">Resource library</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="script.js"></script>
+
+</body>
+
+</html>
